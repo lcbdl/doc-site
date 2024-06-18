@@ -1,0 +1,13 @@
+{
+  "name": "doc",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "antora --fetch --cache-dir .cache/antora antora-playbook.yml"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "antora": "^3.1.7"
+  }
+}

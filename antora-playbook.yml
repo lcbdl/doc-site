@@ -1,0 +1,13 @@
+site:
+  title: Chuanbao's Developer Blog
+  start_page: questions::architecture.adoc
+content:
+  sources:
+    - url: ../blog
+    - url: https://gitlab.com/antora/demo/demo-component-a.git
+      branches: HEAD
+    - url: ../questions
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
