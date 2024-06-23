@@ -1,6 +1,6 @@
 site:
-  title: Chuanbao's Developer Blog
-  start_page: questions::architecture.adoc
+  title: Chuanbao's Dev Space
+  start_page: blog::angular-signal-guide.adoc
 content:
   sources:
     - url: ../blog
