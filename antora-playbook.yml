@@ -4,8 +4,6 @@ site:
 content:
   sources:
     - url: ../blog
-    - url: https://gitlab.com/antora/demo/demo-component-a.git
-      branches: HEAD
     - url: ../questions
 ui:
   bundle:
