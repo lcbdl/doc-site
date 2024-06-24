@@ -6,7 +6,7 @@ To generate the site, run this command:
 
 [source bash]
 ----
-yarn build
+npm run build
 ----
 
 Please refer to the document for Antora playbook and how to generate document site.
