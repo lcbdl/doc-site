@@ -4,7 +4,7 @@ site:
 content:
   sources:
     - url: ../blog
-    - url: ../questions
+    - url: ../interview-questions
 ui:
   bundle:
     url: ./ui-bundle
