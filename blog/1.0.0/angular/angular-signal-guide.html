@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Angular Signal Explained :: Chuanbao&#x27;s Dev Space</title>
+    <meta name="generator" content="Antora 3.1.7">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Chuanbao&#x27;s Dev Space</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="blog" data-version="1.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Chuanbao&#x27;s Dev Blog</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Angular</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="angular-signal-guide.html">Angular Signal Explained</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="angular-signal-input-output.html">Angular Signal Input, Output, and Model</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Chuanbao&#x27;s Dev Blog</span>
+    <span class="version">1.0.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Chuanbao's Dev Blog</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1.0.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../interview-questions/1.0.0/architecture.html">Interview Q&A</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../interview-questions/1.0.0/architecture.html">1.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Chuanbao's Dev Blog</a></li>
+    <li>Angular</li>
+    <li><a href="angular-signal-guide.html">Angular Signal Explained</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/lcbdl/blog/edit/main/modules/ROOT/pages/angular/angular-signal-guide.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Angular Signal Explained</h1>
+<div class="sect1">
+<h2 id="_signals_basics"><a class="anchor" href="#_signals_basics"></a>Signals Basics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Angular Signal was introduced in Angular 17. Angular uses signals established a new way of change detection.  It uses the <strong>observable design pattern</strong>. When one code changes the value of a signal, other code that uses the signal will get notified and  we can do something in response to the new value. That&#8217;s the main advantage to use signals.</p>
+</div>
+<div class="olist arabic">
+<div class="title">The key concepts in signal:</div>
+<ol class="arabic">
+<li>
+<p>Writable signals: created by calling the <code>signal()</code> function with a initial value.</p>
+</li>
+<li>
+<p>Computed signals: computed signals are read-only signals that derive their value from other signals.</p>
+</li>
+<li>
+<p>Effect: we can use <code>effect()</code> to perform some sort of side effect when the signal value changes without modifying the signal.</p>
+</li>
+<li>
+<p>Read signal value: need to use <code>yourSignalVarName()</code></p>
+</li>
+<li>
+<p>Modify signal: need to use <code>yourSignalVar.set()</code> or <code>yourSignalVar.update()</code> to modify signal value.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In the following example,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>We create a WritableSignal signal "circleRadius" using <code>signal()</code>.</p>
+</li>
+<li>
+<p>We create a computed signal "circleArea" using <code>computed()</code>.</p>
+</li>
+<li>
+<p>We display them on the UI using <code>circleRadius()</code> and <code>circleArea()</code>.</p>
+</li>
+<li>
+<p>The "Increase Radius" button will increase the value of the signal by calling <code>update()</code> function.</p>
+</li>
+<li>
+<p>The "Reset" button reset the value of the signal to 0 by calling <code>set()</code> function.</p>
+</li>
+<li>
+<p>We use <code>effect()</code> to log the circle radius when the signal value changes.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>import { Component, computed, signal, effect } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+
+@Component({
+  selector: 'app-signal-demo-1',
+  standalone: true,
+  imports: [MatButtonModule],
+  template: `
+    &lt;p&gt;Signal Demo 2&lt;/p&gt;
+    &lt;!-- display signal value --&gt;
+    &lt;p&gt;Circle Radius: {{ circleRadius() }} cm&lt;/p&gt;
+    &lt;!-- display computed signal value --&gt;
+    &lt;p&gt;Circle area: {{ circleArea() }} square cm&lt;/p&gt;
+    &lt;button mat-flat-button color="primary" (click)="increase()"&gt;
+      Increase Radius
+    &lt;/button&gt;
+    &lt;button mat-flat-button color="secondary" (click)="reset()"&gt;Reset&lt;/button&gt;
+  `,
+  styles: [],
+})
+export class SignalDemo1Component {
+  // create a new signal variable
+  circleRadius = signal&lt;number&gt;(0);
+  // create a computed signal variable
+  circleArea = computed&lt;number&gt;(
+    () =&gt; Math.PI * Math.pow(this.circleRadius(), 2)
+  );
+
+  constructor() {
+    effect(() =&gt; {
+      // use effect to log signal value when it changes
+      console.log(`circleRadius changed to ${this.circleRadius()}`);
+    });
+  }
+
+  increase() {
+    // Increase the signal value
+    this.circleRadius.update((v) =&gt; v + 1);
+  }
+
+  reset() {
+    // Set signal value to 0
+    this.circleRadius.set(0);
+  }
+}</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/signal-sample1.png" alt="signal sample 1 running result">
+</div>
+<div class="title">Figure 1. Signal sample 1 running result</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_signal_for_objects_or_arrays"><a class="anchor" href="#_signal_for_objects_or_arrays"></a>Signal for Objects or Arrays</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Angular needs to trigger the notification when the signal value changes. It has no issue with primitive values.  But for object or array value, it won&#8217;t consider the value changed if we just mutated the content of the object or array.</p>
+</div>
+<div class="paragraph">
+<p>In the follow code, we manually mutate the john&#8217;s age in function <code>mutate1()</code>.  We can see that John&#8217;s age changed, but the computed signal <code>dad().age</code> does&#8217;t change on the UI.  That&#8217;s because it bypasses the signal system. The  manually change of an object&#8217;s property won&#8217;t trigger the notification.  So, we should always use the Signal API <code>set()</code> or <code>update()</code> to modify signals.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>import { CommonModule } from '@angular/common';
+import { Component, computed, signal } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+
+@Component({
+  selector: 'app-signal-demo-2',
+  standalone: true,
+  imports: [CommonModule, MatButtonModule],
+  template: `
+    &lt;p&gt;Signal Demo 2&lt;/p&gt;
+    &lt;!-- display signal value --&gt;
+    &lt;div&gt;{{ john().name }}'s age: {{ john().age }}&lt;/div&gt;
+    &lt;div&gt;{{ dad().name }}'s age: {{ dad().age }}&lt;/div&gt;
+    &lt;br /&gt;
+    &lt;div&gt;
+      &lt;button mat-flat-button color="primary" (click)="mutate1()"&gt;
+        Modify John's age manually
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;br /&gt;
+    &lt;div&gt;
+      &lt;button mat-flat-button color="primary" (click)="mutate2()"&gt;
+        Modify John's age with update()
+      &lt;/button&gt;
+    &lt;/div&gt;
+  `,
+  styles: [],
+})
+export class SignalDemo2Component {
+  // create a new signal variable
+  john = signal({ name: 'John', age: 10 });
+
+  dad = computed(() =&gt; ({ name: 'Dad', age: this.john().age + 25 }));
+
+  mutate1() {
+    // Increase the signal value, but it won't trigger notification.
+    this.john().age++;
+  }
+
+  mutate2() {
+    // Increase the signal value using update()
+    this.john.update((value) =&gt; ({ ...value, age: value.age + 1 }));
+  }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_signal_equation"><a class="anchor" href="#_signal_equation"></a>Signal Equation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Angular signal API by default uses "===" to check if the signal value changed. Variables of object value or array hold the reference of memory.  The reference won&#8217;t change if we change the properties of them. So even we use the <code>set()</code> or <code>update()</code>, the notification won&#8217;t happen if we mutate the properties of the object or items of the array.  It&#8217;s a wrong way to use <code>update()</code> in the following example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>  // This won't work because the reference doesn't change
+  this.john.update((value) =&gt; {
+    value.age += 1;
+    return value;
+  });</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The right solution is to use the spread operator <code>&#8230;&#8203;</code> to create a new instance of the value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>this.john.update((value) =&gt; ({ ...value, age: value.age + 1 }));</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On the other hand, the following code will always trigger the notification even we set the signal with same value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>  // This will trigger the notification ever time it is called.
+  this.john.set({name: 'John', age: 10});</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The solution for this case is to override the equality method when we create a signal like below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>john = signal(
+  {
+    name: 'John',
+    age: 10
+  },
+  {
+    equal: (a, b) =&gt; {
+      return a.name === b.name &amp;&amp; a.age === b.age;
+    }
+  }
+);
+
+mutateJohnAge() {
+  // The notification won't trigger because the signal's equal method will return true
+  this.john.set({name: 'John', age: 10});
+}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_convert_observable_response_to_signal"><a class="anchor" href="#_convert_observable_response_to_signal"></a>Convert Observable Response to Signal</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://angular.dev/guide/signals/rxjs-interop">RxJS Interop</a> is a new API to convert Observable to Signal and vise versa.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>toSignal: convert Observable to Signal.</p>
+</li>
+<li>
+<p>toObservable: convert Signal to Observable.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here is the example of using <code>toSignal()</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>  private http = inject(HttpClient);
+  // create a new signal from Observable.
+  family = toSignal(this.http.get&lt;Person[]&gt;('http://localhost:3000/family'), {
+    initialValue: [],
+  });
+
+  john = computed(() =&gt; this.family().find((p) =&gt; p.name === 'John')!);
+  dad = computed(() =&gt; this.family().find((p) =&gt; p.name === 'Dad')!);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>toSignal()</code> creates a read-only Signal.  You can&#8217;t modify it. This is OK if you display the signal value only.  But it is a problem if you want to modify it.</p>
+</div>
+<div class="paragraph">
+<p>To resolve this problem, we can create a <code>WritableSignal</code> with the ready-only signal value. Here is an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>  private http = inject(HttpClient);
+  // create a new signal from Observable.
+  readOnlyFamily = toSignal(this.http.get&lt;Person[]&gt;('http://localhost:3000/family'), {
+    initialValue: [],
+  });
+
+  // create a signal of signal
+  family = computed(() =&gt; signal(this.readOnlyFamily()));
+
+  onModifyButtonClick() {
+    // modify the signal value
+    this.family().update(p =&gt; ({...p, age: 30}));
+  }</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Angular Signal is a powerful feature, it</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>provides a easier way to handle lazy loading</p>
+</li>
+<li>
+<p>is more understandable then observable + async pipe to program reactively</p>
+</li>
+<li>
+<p>increases the performance by reducing unnecessary checks the component data and re-rendering.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

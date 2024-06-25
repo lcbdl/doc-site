@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Angular :: Chuanbao&#x27;s Dev Space</title>
+    <meta name="generator" content="Antora 3.1.7">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">Chuanbao&#x27;s Dev Space</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="interview-questions" data-version="1.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="architecture.html">Interview Q&amp;A</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="architecture.html">Architecture &amp; Design</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Front End</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="angular.html">Angular</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="react.html">React</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Back End</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="java.html">Java</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="node-js.html">Node JS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Interview Q&amp;A</span>
+    <span class="version">1.0.0</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <div class="title"><a href="../../blog/1.0.0/index.html">Chuanbao's Dev Blog</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../blog/1.0.0/index.html">1.0.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <div class="title"><a href="architecture.html">Interview Q&A</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="architecture.html">1.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../blog/1.0.0/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="architecture.html">Interview Q&A</a></li>
+    <li>Front End</li>
+    <li><a href="angular.html">Angular</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/lcbdl/interview-questions/edit/main/modules/ROOT/pages/angular.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Angular</h1>
+<div class="sect1">
+<h2 id="_whats_of_angular_15"><a class="anchor" href="#_whats_of_angular_15"></a>What&#8217;s of Angular 15</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Stable Standalone Component API</p>
+</li>
+<li>
+<p>Single file component</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_whats_of_angular_16"><a class="anchor" href="#_whats_of_angular_16"></a>What&#8217;s of Angular 16</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Angular Signal (Developer preview)</p>
+</li>
+<li>
+<p>Support Tailwind CSS</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_whats_new_of_angular_17"><a class="anchor" href="#_whats_new_of_angular_17"></a>What&#8217;s new of Angular 17?</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_new_built_in_control_flow"><a class="anchor" href="#_new_built_in_control_flow"></a>New built-in control flow</h3>
+<div class="sect3">
+<h4 id="_if"><a class="anchor" href="#_if"></a>@if</h4>
+<div class="listingblock">
+<div class="title">Old *ngIf else syntax</div>
+<div class="content">
+<pre>&lt;div *ngIf="condition; else elseBlock"&gt;
+  Content to render when condition is true.
+&lt;/div&gt;
+&lt;ng-template #elseBlock&gt;
+  Content to render when condition is false.
+&lt;/ng-template&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">New @if and @else syntax</div>
+<div class="content">
+<pre>@if (a &gt; b) {
+  {{a}} is greater than {{b}}
+} @else if (b &gt; a) {
+  {{a}} is less than {{b}}
+} @else {
+  {{a}} is equal to {{b}}
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_for"><a class="anchor" href="#_for"></a>@for</h4>
+<div class="listingblock">
+<div class="title">Old *ngFor syntax</div>
+<div class="content">
+<pre>&lt;li *ngFor="let user of users; index as i; first as isFirst"&gt;
+  {{i}}/{{users.length}}. {{user}} &lt;span *ngIf="isFirst"&gt;default&lt;/span&gt;
+&lt;/li&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">New @for syntax</div>
+<div class="content">
+<pre>@for (item of items; track item.id) {
+  {{ item.name }}
+}
+
+@for (item of items; track item.id; let idx = $index, e = $even) {
+  Item #{{ idx }}: {{ item.name }}
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Inside @for contents, several implicit variables are always available:</p>
+</div>
+<div class="ulist">
+<div class="title">Variable	Meaning</div>
+<ul>
+<li>
+<p>$count	Number of items in a collection iterated over</p>
+</li>
+<li>
+<p>$index	Index of the current row</p>
+</li>
+<li>
+<p>$first	Whether the current row is the first row</p>
+</li>
+<li>
+<p>$last	Whether the current row is the last row</p>
+</li>
+<li>
+<p>$even	Whether the current row index is even</p>
+</li>
+<li>
+<p>$odd	Whether the current row index is odd</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_switch"><a class="anchor" href="#_switch"></a>@switch</h4>
+<div class="listingblock">
+<div class="content">
+<pre>@switch (condition) {
+  @case (caseA) {
+    Case A.
+  }
+  @case (caseB) {
+    Case B.
+  }
+  @default {
+    Default case.
+  }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_angular_signal"><a class="anchor" href="#_angular_signal"></a>Angular Signal</h3>
+<div class="paragraph">
+<p>Basically Angular signal is a special type of variable that holds a value and also provides a notification mechanism to tell other program when the variable changes.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

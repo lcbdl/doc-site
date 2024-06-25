@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Angular Signal Input, Output, and Model :: Chuanbao&#x27;s Dev Space</title>
+    <meta name="generator" content="Antora 3.1.7">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Chuanbao&#x27;s Dev Space</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="blog" data-version="1.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Chuanbao&#x27;s Dev Blog</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Angular</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="angular-signal-guide.html">Angular Signal Explained</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="angular-signal-input-output.html">Angular Signal Input, Output, and Model</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Chuanbao&#x27;s Dev Blog</span>
+    <span class="version">1.0.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Chuanbao's Dev Blog</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1.0.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../interview-questions/1.0.0/architecture.html">Interview Q&A</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../interview-questions/1.0.0/architecture.html">1.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Chuanbao's Dev Blog</a></li>
+    <li>Angular</li>
+    <li><a href="angular-signal-input-output.html">Angular Signal Input, Output, and Model</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/lcbdl/blog/edit/main/modules/ROOT/pages/angular/angular-signal-input-output.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Angular Signal Input, Output, and Model</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Angular use <code>@Input()</code> and <code>@Output()</code> to define the interface between the parent and child components.</p>
+</div>
+<div class="paragraph">
+<p>The <code>@Input()</code> annotation defines a property to allow the parent component passes a value to the child component.</p>
+</div>
+<div class="paragraph">
+<p>The <code>@Output()</code> annotation expose an event of the child component.  The parent component can specify a callback function to react when the event happens in the child component.</p>
+</div>
+<div class="paragraph">
+<p>Angular induced Signal type of input, model, and output after the Signal API was introduced. They are more understandable, more type-safe, and powerful.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_signal_inputs"><a class="anchor" href="#_signal_inputs"></a>Signal Inputs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here is a component that has a input property.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@Component({
+  template: `
+    &lt;p&gt;Regular Input Child Component&lt;/p&gt;
+    &lt;div&gt;
+      Name: &lt;b&gt;{{ name }}&lt;/b&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      Age: &lt;b&gt;{{ value }}&lt;/b&gt;
+    &lt;/div&gt;
+  `,
+})
+export class ChildComponent {
+  ngOnChanges() {
+    console.log('Name = ' + this.name);
+    console.log('Age = ' + this.age);
+  }
+  @Input()
+  age = 20;
+  @Input()
+  name = 'John';
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are 2 input properties, name and age. It also output the name and age in the console when name or age changes in the <code>ngOnChanges()</code> lifecycle method. But there is any issue, it will log both name and age either name or age changes.</p>
+</div>
+<div class="paragraph">
+<p>Now, let change the name and age to Signal type inputs.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>import { Component, effect, input } from '@angular/core';
+@Component({
+  template: `
+    &lt;p&gt;Signal Input Child Component&lt;/p&gt;
+    &lt;div&gt;
+      Name: &lt;b&gt;{{ name() }}&lt;/b&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      Age: &lt;b&gt;{{ age() }}&lt;/b&gt;
+    &lt;/div&gt;
+  `,
+})
+export class ChildComponent {
+  constructor() {
+    effect(() =&gt; {
+      console.log('Name = ' + this.name());
+    });
+    effect(() =&gt; {
+      console.log('Age = ' + this.age());
+    });
+  }
+
+  age = input(20);
+
+  name = input('John');
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the new code, we defined 2 signal inputs by calling <code>input()</code> function. We also log the value of name and age in 2 effect callbacks.  This will do the same work that the <code>ngOnChanges()</code> lifecycle callback does. But it will log name only when the name changes, and log age only when the age changes.</p>
+</div>
+<div class="sect2">
+<h3 id="_signal_input_alias"><a class="anchor" href="#_signal_input_alias"></a>Signal input alias</h3>
+<div class="paragraph">
+<p>You can assign an alias to an input with this code <code>name = input('John', {alias: 'nickname'})</code>.  So, you can use the alias "nickname" when you use the child component in the parent component template like this <code>&lt;child-component [nickname]="childName()" /&gt;</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_transform_input_value"><a class="anchor" href="#_transform_input_value"></a>Transform input value</h3>
+<div class="paragraph">
+<p>You can transform the input into other format when you define a signal input in the child component.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>name = input('John', {
+  alias: 'nickname',
+  transform: (value: string) =&gt;
+    (value === 'John' ? 'Johnny' : 'Tommy') as string,
+});</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_model_inputs"><a class="anchor" href="#_model_inputs"></a>Model Inputs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Model inputs give a Component two-way binding ability. We can use <code>[(myProperty)]</code> to read and write a property of a component.</p>
+</div>
+<div class="paragraph">
+<p>The model inputs are writable.  You can call <code>set()</code> and <code>update()</code>.</p>
+</div>
+<div class="paragraph">
+<p>The signal of age changes in both parent and child components when it is updated in the child component in the following code.</p>
+</div>
+<div class="listingblock">
+<div class="title">Child component with model property</div>
+<div class="content">
+<pre>@Component({
+  selector: 'app-signal-input-child',
+  standalone: true,
+  imports: [MatButtonModule],
+  template: `
+    &lt;p&gt;Signal Input Child Component&lt;/p&gt;
+    &lt;div&gt;
+      Age in child comp: &lt;b&gt;{{ age() }}&lt;/b&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;button mat-flat-button color="primary" (click)="increaseAge()"&gt;
+        Increase
+      &lt;/button&gt;
+    &lt;/div&gt;
+  `,
+})
+export class SignalInputChildComponent {
+  age = model(20);
+  increaseAge() {
+    this.age.update((val) =&gt; val + 1);
+  }
+}</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Parent component</div>
+<div class="content">
+<pre>@Component({
+  selector: 'app-signal-input-parent',
+  standalone: true,
+  imports: [SignalInputChildComponent, MatButtonModule],
+  template: `
+    &lt;p&gt;Signal Input Parent Component&lt;/p&gt;
+    &lt;div&gt;
+      Age in parent comp: {{ age() }}
+      &lt;!-- display signal value --&gt;
+      &lt;app-signal-input-child [(age)]="age" /&gt;
+    &lt;/div&gt;
+  `,
+  styles: [],
+})
+export class SignalInputParentComponent {
+  name = signal('John');
+  age = signal(0);
+
+  onClick() {
+    this.name.update((v) =&gt; (v === 'John' ? 'Tom' : 'John'));
+  }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_new_output_api"><a class="anchor" href="#_new_output_api"></a>New <code>output()</code> API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The new <code>output()</code> API is a new way to define an output. We can totally replace the old <code>@Output()</code> annotation with the new <code>output()</code>. It&#8217;s more type-safer.</p>
+</div>
+<div class="paragraph">
+<p>Here is how to define a output with <code>output()</code></p>
+</div>
+<div class="listingblock">
+<div class="title">Child component with model property</div>
+<div class="content">
+<pre>@Component({
+  selector: 'app-signal-output-child',
+  standalone: true,
+  imports: [MatButtonModule],
+  template: `
+    &lt;p&gt;Signal Output Child Component&lt;/p&gt;
+    &lt;div&gt;
+      Name: &lt;b&gt;{{ user.name }}&lt;/b&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      Age: &lt;b&gt;{{ user.age }}&lt;/b&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;button mat-flat-button color="primary" (click)="onDelete()"&gt;
+        Delete
+      &lt;/button&gt;
+    &lt;/div&gt;
+  `,
+})
+export class SignalOutputChildComponent {
+  @Input({ required: true })
+  user!: User;
+  deleteUser = output&lt;User&gt;();
+
+  onDelete() {
+    this.deleteUser.emit(this.user);
+  }
+}</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Parent component</div>
+<div class="content">
+<pre>@Component({
+  selector: 'app-signal-output-parent',
+  standalone: true,
+  imports: [SignalOutputChildComponent, MatButtonModule],
+  template: `
+    &lt;p&gt;Signal Output Parent Component&lt;/p&gt;
+    &lt;div&gt;
+      &lt;app-signal-output-child
+        [user]="user"
+        (deleteUser)="onDeleteUser($event)"
+      /&gt;
+    &lt;/div&gt;
+  `,
+  styles: [],
+})
+export class SignalOutputParentComponent {
+  user: User = {
+    name: 'John',
+    age: 20,
+  };
+
+  onDeleteUser(user: User) {
+    console.log(user);
+  }
+}</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_rxjs_interoperability"><a class="anchor" href="#_rxjs_interoperability"></a>RxJS Interoperability</h3>
+<div class="paragraph">
+<p>As we can see from the code, the new output() API is not signal-based.  But we can use <code>outputFromObservable()</code> to generate output from Observable.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>  import { outputFromObservable } from '@angular/core/rxjs-interop';
+  ....
+  // deleteUser = output&lt;User&gt;();
+  deleteUser = outputFromObservable&lt;User&gt;(of({
+    name: 'John',
+    age: 20
+  }))</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vise versa, we can convert an output into an observable like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>import { outputToObservable } from '@angular/core/rxjs-interop';
+....
+deleteUser = output&lt;User&gt;();
+deleteUserObservable$ = outputToObservable(this.deleteUser);</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We explained the new <code>input()</code>, <code>output()</code>, and <code>model()</code> API.</p>
+</div>
+<div class="paragraph">
+<p>They are more understandable, more type-safer, and more powerful by using signal APIs.</p>
+</div>
+<div class="paragraph">
+<p>I highly recommend to use the new API in your Angular applications.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

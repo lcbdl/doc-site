@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Java :: Chuanbao&#x27;s Dev Space</title>
+    <meta name="generator" content="Antora 3.1.7">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">Chuanbao&#x27;s Dev Space</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="interview-questions" data-version="1.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="architecture.html">Interview Q&amp;A</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="architecture.html">Architecture &amp; Design</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Front End</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="angular.html">Angular</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="react.html">React</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Back End</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="java.html">Java</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="node-js.html">Node JS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Interview Q&amp;A</span>
+    <span class="version">1.0.0</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <div class="title"><a href="../../blog/1.0.0/index.html">Chuanbao's Dev Blog</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../blog/1.0.0/index.html">1.0.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <div class="title"><a href="architecture.html">Interview Q&A</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="architecture.html">1.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../blog/1.0.0/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="architecture.html">Interview Q&A</a></li>
+    <li>Back End</li>
+    <li><a href="java.html">Java</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/lcbdl/interview-questions/edit/main/modules/ROOT/pages/java.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Java</h1>
+<div class="sect1">
+<h2 id="_building_message_driven_microservices"><a class="anchor" href="#_building_message_driven_microservices"></a>Building Message-Driven Microservices</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Message-driven microservices are designed to communicate through messaging systems, making them highly decoupled and resilient. Spring Integration helps in building such systems by providing support for various messaging patterns and integration with popular message brokers.</p>
+</div>
+<div class="paragraph">
+<p>Example: Building a Message-Driven Microservice with Spring Integration</p>
+</div>
+<div class="sect2">
+<h3 id="_setup_dependencies"><a class="anchor" href="#_setup_dependencies"></a>Setup Dependencies:</h3>
+<div class="paragraph">
+<p>Include Spring Integration and a messaging library (e.g., RabbitMQ, Kafka) in your pom.xml (for Maven) or build.gradle (for Gradle).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;!-- Maven --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.integration&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-integration-core&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.integration&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-integration-amqp&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.amqp&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-rabbit&lt;/artifactId&gt;
+&lt;/dependency&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configure_message_channels"><a class="anchor" href="#_configure_message_channels"></a>Configure Message Channels:</h3>
+<div class="paragraph">
+<p>Define channels to be used for communication between components.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@Configuration
+public class IntegrationConfig {
+    @Bean
+    public MessageChannel inputChannel() {
+        return new DirectChannel();
+    }
+
+    @Bean
+    public MessageChannel outputChannel() {
+        return new DirectChannel();
+    }
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_define_integration_flows"><a class="anchor" href="#_define_integration_flows"></a>Define Integration Flows:</h3>
+<div class="paragraph">
+<p>Create integration flows that describe how messages move through the system.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@Configuration
+@EnableIntegration
+public class IntegrationFlowConfig {
+
+    @Bean
+    public IntegrationFlow processFlow() {
+        return IntegrationFlows.from("inputChannel")
+                .transform((String payload) -&gt; payload.toUpperCase())
+                .handle(System.out::println)
+                .channel("outputChannel")
+                .get();
+    }
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_message_producer_and_consumer"><a class="anchor" href="#_message_producer_and_consumer"></a>Message Producer and Consumer:</h3>
+<div class="paragraph">
+<p>Implement message producers and consumers. Producers send messages to the channels, and consumers process the messages from the channels.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@Service
+public class MessageProducer {
+    private final MessageChannel inputChannel;
+
+    @Autowired
+    public MessageProducer(@Qualifier("inputChannel") MessageChannel inputChannel) {
+        this.inputChannel = inputChannel;
+    }
+
+    public void sendMessage(String message) {
+        inputChannel.send(MessageBuilder.withPayload(message).build());
+    }
+}
+
+@Service
+public class MessageConsumer {
+    @ServiceActivator(inputChannel = "outputChannel")
+    public void consume(String message) {
+        System.out.println("Received message: " + message);
+    }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_building_event_driven_architectures"><a class="anchor" href="#_building_event_driven_architectures"></a>Building Event-Driven Architectures</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Event-driven architectures leverage events to trigger changes and communications between microservices. Spring Integration makes it straightforward to build such systems by providing robust support for event handling and processing.</p>
+</div>
+<div class="paragraph">
+<p>Example: Event-Driven Architecture with Spring Integration and Kafka</p>
+</div>
+<div class="sect2">
+<h3 id="_setup_dependencies_2"><a class="anchor" href="#_setup_dependencies_2"></a>Setup Dependencies:</h3>
+<div class="paragraph">
+<p>Include Spring Integration and Kafka dependencies.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;!-- Maven --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.integration&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-integration-core&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.integration&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-integration-kafka&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.kafka&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-kafka&lt;/artifactId&gt;
+&lt;/dependency&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configure_kafka_components"><a class="anchor" href="#_configure_kafka_components"></a>Configure Kafka Components:</h3>
+<div class="paragraph">
+<p>Set up Kafka producer and consumer factories, along with the Kafka template.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@Configuration
+public class KafkaConfig {
+    @Bean
+    public ProducerFactory&lt;String, String&gt; producerFactory() {
+        Map&lt;String, Object&gt; configProps = new HashMap&lt;&gt;();
+        configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        return new DefaultKafkaProducerFactory&lt;&gt;(configProps);
+    }
+
+    @Bean
+    public KafkaTemplate&lt;String, String&gt; kafkaTemplate() {
+        return new KafkaTemplate&lt;&gt;(producerFactory());
+    }
+
+    @Bean
+    public ConsumerFactory&lt;String, String&gt; consumerFactory() {
+        Map&lt;String, Object&gt; configProps = new HashMap&lt;&gt;();
+        configProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        configProps.put(ConsumerConfig.GROUP_ID_CONFIG, "group_id");
+        configProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        configProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        return new DefaultKafkaConsumerFactory&lt;&gt;(configProps);
+    }
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_define_integration_flows_for_kafka"><a class="anchor" href="#_define_integration_flows_for_kafka"></a>Define Integration Flows for Kafka:</h3>
+<div class="listingblock">
+<div class="content">
+<pre>@Configuration
+@EnableIntegration
+public class KafkaIntegrationConfig {
+
+    @Bean
+    public IntegrationFlow kafkaProducerFlow(KafkaTemplate&lt;String, String&gt; kafkaTemplate) {
+        return IntegrationFlows.from("kafkaInputChannel")
+                .handle(Kafka.outboundChannelAdapter(kafkaTemplate)
+                        .topic("myTopic"))
+                .get();
+    }
+
+    @Bean
+    public IntegrationFlow kafkaConsumerFlow(ConsumerFactory&lt;String, String&gt; consumerFactory) {
+        return IntegrationFlows.from(Kafka.messageDrivenChannelAdapter(consumerFactory, "myTopic"))
+                .handle(message -&gt; {
+                    System.out.println("Received from Kafka: " + message.getPayload());
+                })
+                .get();
+    }
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_message_producer_and_consumer_services"><a class="anchor" href="#_message_producer_and_consumer_services"></a>Message Producer and Consumer Services:</h3>
+<div class="listingblock">
+<div class="content">
+<pre>@Service
+public class KafkaMessageProducer {
+    private final MessageChannel kafkaInputChannel;
+
+    @Autowired
+    public KafkaMessageProducer(@Qualifier("kafkaInputChannel") MessageChannel kafkaInputChannel) {
+        this.kafkaInputChannel = kafkaInputChannel;
+    }
+
+    public void sendMessage(String message) {
+        kafkaInputChannel.send(MessageBuilder.withPayload(message).build());
+    }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
