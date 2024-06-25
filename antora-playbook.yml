@@ -3,8 +3,8 @@ site:
   start_page: blog::index.adoc
 content:
   sources:
-    - url: ../blog
-    - url: ../interview-questions
+    - url: https://github.com/lcbdl/blog.git
+    - url: https://github.com/lcbdl/interview-questions.git
 ui:
   bundle:
     url: ./ui-bundle
