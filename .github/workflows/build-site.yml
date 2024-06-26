@@ -33,7 +33,7 @@ jobs:
     - run: npm run build 
     - shell: bash
       run: |
-        cp ./chuanbao-space/doc-site/google7fbcedb813d90241.html ./build/site
+        cp ./google7fbcedb813d90241.html ./build/site
     - name: Deploy 🚀
       uses: peaceiris/actions-gh-pages@v3
       with:
