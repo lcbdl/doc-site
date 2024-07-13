@@ -43,6 +43,9 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Front End</span>
 <ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="javascript.html">JavaScript &amp; TypeScript</a>
+  </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="angular.html">Angular</a>
   </li>
@@ -102,6 +105,7 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="architecture.html">Interview Q&A</a></li>
+    <li>Front End</li>
     <li><a href="javascript.html">JavaScript &amp; TypeScript</a></li>
   </ul>
 </nav>
@@ -134,6 +138,27 @@
 <p>Re-declaration:  Var can, but let or const.</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_how_to_make_a_const_object_a_real_constreadonly"><a class="anchor" href="#_2_how_to_make_a_const_object_a_real_constreadonly"></a>2. How to make a const object a real const(readonly)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When we define a const object, except we can&#8217;t assign a new value to the variable, we still can adjust the property of it.  To make it a real readonly constant, we can add <code>as const</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>const COLOR_OPTIONS = [
+  { label: 'Black', value: 'black', tw: 'zinc-900' },
+  {
+    label: 'Blue',
+    value: 'blue',
+    tw: 'blue-950',
+  },
+  { label: 'Rose', value: 'rose', tw: 'rose-950' }
+] as const;</pre>
+</div>
 </div>
 </div>
 </div>
